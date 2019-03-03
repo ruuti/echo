@@ -29,6 +29,6 @@ public class WidgetController {
             requestHeaders.put(headerName, request.getHeader(headerName));
         }
 
-        return new Widget(request.getRemoteAddr(), requestHeaders);
+        return new Widget(request.getHeader("x-forwarded-for"), requestHeaders);
     }
 }
