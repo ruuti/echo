@@ -27,8 +27,8 @@ public class WidgetController {
         while(headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             String headerValue = request.getHeader(headerName);
-            if(!request.getHeader(headerName).startsWith("x-") && !request.getHeader(headerName).startsWith("cf-")) {
-                requestHeaders.put(headerName, request.getHeader(headerName));
+            if(!headerName.startsWith("x-") && !headerName.startsWith("cf-")) {
+                requestHeaders.put(headerName, headerValue);
             }
         }
 
