@@ -26,7 +26,10 @@ public class WidgetController {
         Enumeration<String> headerNames = request.getHeaderNames();
         while(headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
-            requestHeaders.put(headerName, request.getHeader(headerName));
+            String headerValue = request.getHeader(headerName);
+            if(!request.getHeader(headerName).startsWith("x-") && !request.getHeader(headerName).startsWith("cf-")) {
+                requestHeaders.put(headerName, request.getHeader(headerName));
+            }
         }
 
         return new Widget(request.getHeader("x-forwarded-for"), requestHeaders);
